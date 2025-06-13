@@ -130,52 +130,84 @@ header .navbar ul li a:hover {
   color: rgb(24, 2, 63);
   display: none;
 }
-@media (max-width: 768px) {
-  #menu {
-    display: block;
-  }
-  header .navbar {
-    position: fixed;
-    top: 6.5rem;
-    right: -120%;
-    width: 75%;
-    height: 100%;
-    text-align: left;
-    align-items: flex-start;
-    background-color: #0e0f31;
-  }
-  header .navbar ul {
-    flex-flow: column;
-    padding: 1rem;
-  }
-  header .navbar ul li {
-    text-align: center;
-    width: 100%;
-    margin: 1rem 0;
-    border-radius: 0.5rem;
-    width: 26rem;
-  }
-  header .navbar ul li a {
-    display: block;
-    padding: 1rem;
-    text-align: left;
-    color: #fff;
-    font-size: 2rem;
-  }
-  header .navbar ul li a.active,
-  header .navbar ul li a:hover {
-    padding: 1rem;
-    color: #fff;
-    border-radius: 0.5rem;
-    border-bottom: 0.5rem solid #da0416;
-  }
-  .fa-times {
-    transform: rotate(180deg);
-  }
-  header .navbar.nav-toggle {
-    right: 0;
-  }
+/* Adjustments for smaller phone screens (max-width: 600px is a common breakpoint) */
+@media (max-width: 600px) {
+    .home {
+        min-height: auto;
+        padding-top: 8rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center; /* Ensure all text within .home is centered */
+    }
+
+    .home .content {
+        padding-top: 0;
+        margin-top: 2rem;
+        order: 2;
+        padding: 0 1rem; /* Add horizontal padding to content to prevent it from touching screen edges */
+    }
+
+    .home .content h2 {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem; /* Increased space below main heading */
+    }
+
+    .home .content h2 span {
+        font-size: 3.5rem;
+    }
+
+    .home .content p {
+        font-size: 2rem;
+        margin-bottom: 2rem; /* Increased space below paragraph */
+    }
+
+    .home .image {
+        margin-top: 0;
+        margin-left: 0;
+        order: 1;
+        width: 80%;
+        max-width: 300px;
+        margin-bottom: 2rem; /* Add space below the image for the content */
+    }
+
+    .home .image img {
+        margin-top: 0;
+        margin-left: 0;
+        width: 100%;
+        height: auto;
+    }
+
+    .home .btn {
+        position: relative;
+        margin-top: 1rem; /* Adjusted space above the button */
+        margin-bottom: 2rem; /* Add space below the button */
+    }
+
+    .socials {
+        margin-top: 0; /* Remove extra top margin, button provides space */
+        margin-bottom: 2rem; /* Add space below social icons to next section */
+    }
 }
+
+/* You already have a media query for max-width: 450px for .home, let's ensure these apply */
+/* Adjustments for very small phone screens (max-width: 450px) */
+@media (max-width: 450px) {
+    .home .content h2 {
+        font-size: 2.5rem; /* Reduced font size from 3rem */
+    }
+    .home .content h2 span {
+        font-size: 2.5rem; /* Ensure span matches */
+    }
+    .home .content p {
+        font-size: 1.6rem; /* Slightly reduced paragraph font size */
+    }
+    /* You might also want to reduce general padding on the .home section if it feels too wide */
+    .home {
+        padding: 2rem 1rem; /* Example: adjust padding to prevent wide content */
+    }
+}
+
 /* hamburger icon ends */
 
 /* hero section starts*/
