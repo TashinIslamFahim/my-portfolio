@@ -64,7 +64,7 @@ header {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 999;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -73,6 +73,10 @@ header {
   background-color: #fff;
   box-shadow: 0 1px 4px rgba(146, 161, 176, 0.3);
 }
+section.home {
+  padding-top: 6.5rem; /* same as your header height */
+}
+
 section {
   min-height: 100vh;
   padding: 2rem 9%;
@@ -125,10 +129,12 @@ header .navbar ul li a:hover {
 
 /* hamburger icon starts*/
 #menu {
-  font-size: 3rem;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  z-index: 20; /* ensures it stays on top */
   cursor: pointer;
-  color: rgb(24, 2, 63);
-  display: none;
 }
 /* Adjustments for smaller phone screens (max-width: 600px is a common breakpoint) */
 @media (max-width: 600px) {
@@ -315,49 +321,52 @@ header .navbar ul li a:hover {
   margin-bottom: 0;
   list-style: none;
 }
-.socials .social-icons li {
-  display: inline-block;
-  margin-bottom: 14px;
+
+
+.social-icons li {
+  list-style: none;
 }
+.social-icons {
+  display: flex;
+  gap: 8px; /* space between icons */
+  padding-left: 0;
+  margin: 1rem 0;
+  list-style: none;
+}
+
+.social-icons li {
+  list-style: none;
+}
+
 .social-icons a {
   font-size: 2rem;
-  display: inline-block;
-  line-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: #fff;
-  background-color: #09011b;
   width: 44px;
   height: 44px;
-  text-align: center;
-  margin-right: 8px;
-  border-radius: 100%;
-  -webkit-transition: all 0.2s linear;
-  -o-transition: all 0.2s linear;
-  transition: all 0.2s linear;
+  background-color: #09011b;
+  border-radius: 50%;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  text-decoration: none;
 }
-.social-icons a:active,
-.social-icons a:focus,
+
 .social-icons a:hover {
-  color: #fff;
-  background-color: #0685da;
+  transform: scale(1.2);
 }
-.social-icons a.github:hover {
-  background-color: #0e0e0e;
-}
-.social-icons a.twitter:hover {
-  background-color: #00aced;
-}
-.social-icons a.linkedin:hover {
-  background-color: #0072b1;
-}
-.social-icons a.dev:hover {
-  background-color: #bb0000;
-}
-.social-icons a.instagram:hover {
-  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-}
+
+/* Facebook specific hover color */
 .social-icons a.facebook:hover {
-  background: #32506d;
+  background-color: #32506d;
 }
+
+/* Other icons (optional) */
+.social-icons a.instagram:hover { background-color: #E4405F; }
+.social-icons a.linkedin:hover { background-color: #0077b5; }
+.social-icons a.twitter:hover { background-color: #1da1f2; }
+.social-icons a.github:hover { background-color: #333; }
+
 /* social icons end */
 
 /* hero media queries starts*/
@@ -1302,3 +1311,94 @@ form .button-area {
   top: calc(100% - 12rem);
 }
 /* scroll top ends */
+
+/* Make all images responsive */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Fix layout overflowing */
+body, html {
+  overflow-x: hidden;
+}
+
+/* Prevent image overlap */
+.your-image-class {  /* Replace with the actual class if needed */
+  position: relative;
+  z-index: 1;
+}
+
+
+.navbar {
+  display: none; /* hidden by default */
+  position: absolute;
+  top: 60px;  /* adjust as needed */
+  right: 10px;
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  padding: 10px 20px;
+  z-index: 1000;
+  border-radius: 4px;
+}
+
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.navbar ul li {
+  margin: 0;
+}
+
+
+.navbar ul li a {
+  color: black;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.navbar ul li a:hover,
+.navbar ul li a.active {
+  color: #007bff; /* or your theme color */
+}
+
+/* Show navbar when active */
+.navbar.active {
+  display: block;
+}
+.image {
+  margin-top: 120px; /* Increase this value if it's still overlapping */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+@media (max-width: 768px) {
+  .image {
+    margin-top: 6.5rem; /* Same as header height */
+  }
+}
+.image {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+}
+
+.image img {
+  max-width: 90% !important; /* a bit wider */
+  height: auto !important;
+  display: block !important;
+  margin: 0 auto !important;
+  object-fit: contain; /* ensures aspect ratio */
+}
